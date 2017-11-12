@@ -4,7 +4,10 @@
     ViewData["Title"] = "All Cars With Their Parts";
 }
 
-<h2>@ViewData["Title"] = "All Cars With Their Parts";</h2>
+<h2>
+    @ViewData["Title"]
+    <a href="/cars/create" class="btn btn-primary">Add Car</a>
+</h2>
 
 <table class="table table-bordered table-hover">
     <thead>
@@ -29,7 +32,7 @@
             <tr>
 
                 <th>
-                    @car.Make
+                    <a href="/cars/@car.Make">@car.Make</a>
                 </th>
                 <th>
                     @car.Model
