@@ -10,7 +10,7 @@
         {
             return View();
         }
-
+        
         public IActionResult Error()
         {
             return View(new ErrorModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

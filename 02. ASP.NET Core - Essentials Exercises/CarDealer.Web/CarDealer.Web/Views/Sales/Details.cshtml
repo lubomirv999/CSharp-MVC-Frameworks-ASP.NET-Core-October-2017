@@ -7,7 +7,6 @@
 <h2>@ViewData["Title"]</h2>
 
 <h3>@Model.CustomerName</h3>
-
 <p>
     @Model.Discount.ToPercentage()
 </p>
@@ -15,5 +14,5 @@
     $@Model.DiscountedPrice.ToPrice()
 </p>
 <p>
-    @Model.Car.Make  @Model.Car.Model - @(Model.Car.TravelledDistance / 1000) KM
+    @Model.Car.Make @Model.Car.Model - @(Model.Car.TravelledDistance / 1000) KM
 </p>

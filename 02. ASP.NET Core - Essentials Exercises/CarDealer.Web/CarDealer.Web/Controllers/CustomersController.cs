@@ -63,17 +63,17 @@
                 return View(model);
             }
 
-            var customerExist = this.customers.Exists(id);
+            var customerExists = this.customers.Exists(id);
 
-            if (!customerExist)
+            if (!customerExists)
             {
                 return NotFound();
             }
-
+            
             this.customers.Edit(
-                id, 
-                model.Name, 
-                model.BirthDay, 
+                id,
+                model.Name,
+                model.BirthDay,
                 model.IsYoungDriver);
 
             return RedirectToAction(nameof(All), new { order = OrderDirection.Ascending });

@@ -11,7 +11,7 @@
         public bool IsYoungDriver { get; set; }
 
         public IEnumerable<SaleModel> BoughtCars { get; set; }
-
+        
         public decimal TotalMoneySpent
             => this.BoughtCars
                 .Sum(c => c.Price * (1 - (decimal)c.Discount))

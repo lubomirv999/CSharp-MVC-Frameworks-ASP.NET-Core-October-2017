@@ -1,7 +1,7 @@
 ﻿namespace CarDealer.Services.Models.Cars
 {
+    using Parts;
     using System.Collections.Generic;
-    using Models.Parts;
 
     public class CarWithPartsModel : CarModel
     {

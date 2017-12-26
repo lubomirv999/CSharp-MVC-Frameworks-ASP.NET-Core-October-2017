@@ -21,15 +21,16 @@
     margin: 15px;
 }
 
-a.disabled{
+a.disabled {
     pointer-events: none;
 }
 
 .parts-select {
-    height: 300px
+    height: 300px;
 }
 
 @media screen and (max-width: 767px) {
+    /* Hide captions */
     .carousel-caption {
         display: none;
     }

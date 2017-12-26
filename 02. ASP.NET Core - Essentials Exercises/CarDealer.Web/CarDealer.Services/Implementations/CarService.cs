@@ -2,8 +2,8 @@
 {
     using Data;
     using Data.Models;
-    using Models.Cars;
     using Models.Parts;
+    using Models.Cars;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -16,7 +16,7 @@
             this.db = db;
         }
 
-        public IEnumerable<CarModel> ByMake(string make) 
+        public IEnumerable<CarModel> ByMake(string make)
             => this.db
                 .Cars
                 .Where(c => c.Make.ToLower() == make.ToLower())
@@ -28,7 +28,7 @@
                     Model = c.Model,
                     TravelledDistance = c.TravelledDistance
                 })
-                .ToList();        
+                .ToList();
 
         public IEnumerable<CarWithPartsModel> WithParts()
             => this.db
@@ -47,8 +47,18 @@
                 })
                 .ToList();
 
-        public void Create(string make, string model, long travelledDistance)
+        public void Create(
+            string make, 
+            string model, 
+            long travelledDistance,
+            IEnumerable<int> parts)
         {
+            var existingPartIds = this.db
+                .Parts
+                .Where(p => parts.Contains(p.Id))
+                .Select(p => p.Id)
+                .ToList();
+
             var car = new Car
             {
                 Make = make,
@@ -56,7 +66,12 @@
                 TravelledDistance = travelledDistance
             };
 
-            this.db.Cars.Add(car);
+            foreach (var partId in existingPartIds)
+            {
+                car.Parts.Add(new PartCar { PartId = partId });
+            }
+
+            this.db.Add(car);
             this.db.SaveChanges();
         }
     }

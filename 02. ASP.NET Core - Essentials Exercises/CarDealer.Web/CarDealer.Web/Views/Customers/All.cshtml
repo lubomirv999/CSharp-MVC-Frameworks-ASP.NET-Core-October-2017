@@ -19,9 +19,7 @@
             <th>
                 Is Young Driver
             </th>
-            <th>
-
-            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -35,7 +33,7 @@
                     @customer.BirthDay.ToShortDateString()
                 </td>
                 <td>
-                    @(customer.IsYoungDriver ? "Yes": "No")
+                    @(customer.IsYoungDriver ? "Yes" : "No")
                 </td>
                 <td>
                     <a class="btn btn-warning btn-sm" href="/customers/edit/@customer.Id">Edit</a>
@@ -44,3 +42,4 @@
         }
     </tbody>
 </table>
+

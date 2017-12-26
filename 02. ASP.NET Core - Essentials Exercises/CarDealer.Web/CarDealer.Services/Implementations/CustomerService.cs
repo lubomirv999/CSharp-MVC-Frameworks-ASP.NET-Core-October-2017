@@ -30,7 +30,7 @@
             this.db.Add(customer);
             this.db.SaveChanges();
         }
-
+        
         public void Edit(int id, string name, DateTime birthDay, bool isYoungDriver)
         {
             var existingCustomer = this.db.Customers.Find(id);
@@ -57,11 +57,13 @@
                     customersQuery = customersQuery
                         .OrderBy(c => c.BirthDay)
                         .ThenBy(c => c.Name);
+
                     break;
                 case OrderDirection.Descending:
                     customersQuery = customersQuery
                         .OrderByDescending(c => c.BirthDay)
                         .ThenBy(c => c.Name);
+
                     break;
                 default:
                     throw new InvalidOperationException($"Invalid order direction: {order}.");
@@ -90,7 +92,7 @@
                     IsYoungDriver = c.IsYoungDriver
                 })
                 .FirstOrDefault();
-
+        
         public CustomerTotalSalesModel TotalSalesById(int id)
             => this.db
                 .Customers

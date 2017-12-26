@@ -30,7 +30,6 @@
         @foreach (var car in Model)
         {
             <tr>
-
                 <th>
                     <a href="/cars/@car.Make">@car.Make</a>
                 </th>
@@ -44,7 +43,7 @@
                     <ul>
                         @foreach (var part in car.Parts)
                         {
-                            <li>@part.Name - $@part.Price.ToPrice()</li>
+                            <li>@part.Name - $@part.Price.ToString("F2")</li>
                         }
                     </ul>
                 </th>
@@ -52,3 +51,4 @@
         }
     </tbody>
 </table>
+

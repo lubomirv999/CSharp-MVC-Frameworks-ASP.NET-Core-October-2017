@@ -15,16 +15,19 @@
         private readonly IPartService parts;
         private readonly ISupplierService suppliers;
 
-        public PartsController(IPartService parts, ISupplierService suppliers)
+        public PartsController(
+            IPartService parts,
+            ISupplierService suppliers)
         {
             this.parts = parts;
             this.suppliers = suppliers;
         }
 
-        public IActionResult Create() => View(new PartFormModel
-        {
-            Suppliers = this.GetSupplierListItems()
-        });
+        public IActionResult Create() 
+            => View(new PartFormModel
+            {
+                Suppliers = this.GetSupplierListItems()
+            });
 
         [HttpPost]
         public IActionResult Create(PartFormModel model)
@@ -32,7 +35,6 @@
             if (!ModelState.IsValid)
             {
                 model.Suppliers = this.GetSupplierListItems();
-
                 return View(model);
             }
 
@@ -59,7 +61,7 @@
                 Name = part.Name,
                 Price = part.Price,
                 Quantity = part.Quantity,
-                isEdit = true
+                IsEdit = true
             });
         }
 
@@ -68,13 +70,13 @@
         {
             if (!ModelState.IsValid)
             {
-                model.isEdit = true;
+                model.IsEdit = true;
                 return View(model);
             }
 
             this.parts.Edit(
                 id,
-                model.Price, 
+                model.Price,
                 model.Quantity);
 
             return RedirectToAction(nameof(All));
@@ -88,13 +90,13 @@
 
             return RedirectToAction(nameof(All));
         }
-
+        
         public IActionResult All(int page = 1)
             => View(new PartPageListingModel
             {
-                Parts = this.parts.All(page, PageSize),
+                Parts = this.parts.AllListings(page, PageSize),
                 CurrentPage = page,
-                Totalpages = (int)Math.Ceiling(this.parts.Total() / (double)PageSize)
+                TotalPages = (int)Math.Ceiling(this.parts.Total() / (double)PageSize)
             });
 
         private IEnumerable<SelectListItem> GetSupplierListItems()

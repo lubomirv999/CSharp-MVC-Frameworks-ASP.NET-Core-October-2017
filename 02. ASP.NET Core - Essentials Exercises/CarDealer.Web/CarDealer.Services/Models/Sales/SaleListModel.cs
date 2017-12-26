@@ -8,7 +8,7 @@
 
         public bool IsYoungDriver { get; set; }
 
-        public decimal DiscountedPrice
-            => this.Price * ( 1 - ((decimal)this.Discount + (this.IsYoungDriver ? 0.05m : 0)));
+        public decimal DiscountedPrice => 
+            this.Price * (1 - ((decimal)this.Discount + (this.IsYoungDriver ? 0.05m : 0)));
     }
 }

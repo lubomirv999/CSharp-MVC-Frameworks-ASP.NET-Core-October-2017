@@ -3,27 +3,26 @@
 <form method="post">
     <div class="form-group">
         <label asp-for="Make"></label>
-        <input asp-for="Make" class="form-control" />
+        <input asp-for="Make" class="form-control">
         <span asp-validation-for="Make" class="form-text text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Model"></label>
-        <input asp-for="Model" class="form-control" />
+        <input asp-for="Model" class="form-control">
         <span asp-validation-for="Model" class="form-text text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="TravelledDistance"></label>
-        <input asp-for="TravelledDistance" min="0" class="form-control"/>        
+        <input asp-for="TravelledDistance" min="0" class="form-control">
         <span asp-validation-for="TravelledDistance" class="form-text text-danger"></span>
     </div>
     <div class="form-group">
-        <select multiple class="form-control parts-select">
-            <option value="Sample">Sample</option>
-            <option value="Sample1">Sample1</option>
-            <option value="Sample2">Sample2</option>
-        </select>
+        <label asp-for="AllParts"></label>
+        <select asp-for="SelectedParts" asp-items="Model.AllParts" multiple class="form-control parts-select"></select>
+        <small>* Hold "Ctrl" to select multiple parts</small>
     </div>
     <div>
         <input class="btn btn-success" type="submit" value="Save Car" />
     </div>
 </form>
+

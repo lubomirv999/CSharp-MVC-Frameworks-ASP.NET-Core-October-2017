@@ -31,13 +31,13 @@
                 .Entity<PartCar>()
                 .HasOne(pc => pc.Car)
                 .WithMany(c => c.Parts)
-                .HasForeignKey(pc => pc.PartId);
+                .HasForeignKey(pc => pc.CarId);
 
             builder
                 .Entity<PartCar>()
                 .HasOne(pc => pc.Part)
                 .WithMany(p => p.Cars)
-                .HasForeignKey(pc => pc.CarId);
+                .HasForeignKey(pc => pc.PartId);
 
             builder
                 .Entity<Sale>()
